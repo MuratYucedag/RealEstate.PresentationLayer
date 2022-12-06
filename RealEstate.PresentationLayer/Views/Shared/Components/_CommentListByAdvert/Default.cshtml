@@ -1,0 +1,19 @@
+﻿@model List<Comment>
+
+<div class="container">
+    <div class="w3l-header-sec text-center mb-md-5 mb-4">
+        <h1 class="sub-title">Yorumlar</h1>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="cont-details">
+            <div class="cont-top margin-up" style="border:1px solid #F50537;border-radius:5px; padding:5px">
+
+                <div class="cont-right">
+                    <h6 style="color: #F50537">@item.NameSurname - @(((DateTime)item.Date).ToString("dd-MMM-yyyy")) </h6>
+                    <p>@item.Content</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

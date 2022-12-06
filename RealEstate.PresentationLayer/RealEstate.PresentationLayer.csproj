@@ -1,0 +1,68 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Guest\Data\**" />
+    <Content Remove="Areas\Guest\Data\**" />
+    <EmbeddedResource Remove="Areas\Guest\Data\**" />
+    <None Remove="Areas\Guest\Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.97.0" />
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
+    <PackageReference Include="iTextSharp.LGPLv2.Core" Version="1.9.3" />
+    <PackageReference Include="MailKit" Version="3.4.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="MimeKit" Version="3.4.2" />
+    <PackageReference Include="X.PagedList" Version="8.4.3" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstate.BusinessLayer\RealEstate.BusinessLayer.csproj" />
+    <ProjectReference Include="..\RealEstate.DataAccessLayer\RealEstate.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\RealEstate.EntityLayer\RealEstate.EntityLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Default\Data\" />
+    <Folder Include="Areas\Default\Models\" />
+    <Folder Include="ViewComponents\Contacts\" />
+    <Folder Include="wwwroot\Image\" />
+    <Folder Include="wwwroot\pdfreport\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Cooking-Starter\assets\js\bootstrap.min.js" />
+    <None Include="wwwroot\Cooking-Starter\assets\js\jquery-3.3.1.min.js" />
+    <None Include="wwwroot\Cooking-Starter\assets\js\jquery.min.js" />
+    <None Include="wwwroot\Cooking-Starter\assets\js\jquery.zoomslider.min.js" />
+    <None Include="wwwroot\Cooking-Starter\assets\js\modernizr-2.6.2.min.js" />
+    <None Include="wwwroot\Cooking-Starter\assets\js\owl.carousel.js" />
+    <None Include="wwwroot\Cooking-Starter\assets\js\theme-change.js" />
+    <None Include="wwwroot\Cooking-Starter\assets\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\Cooking-Starter\assets\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\Cooking-Starter\assets\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\Cooking-Starter\assets\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\Cooking-Starter\assets\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\Cooking-Starter\assets\webfonts\fa-solid-900.woff2" />
+  </ItemGroup>
+
+</Project>

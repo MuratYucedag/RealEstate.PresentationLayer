@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+
+@await Component.InvokeAsync("_AdvertHeadPartial")
+
+<body>
+
+    @await Component.InvokeAsync("_AdvertHeaderPartial")
+
+    @await Component.InvokeAsync("_AdvertBannerPartial")
+
+    <br />
+
+    @await Component.InvokeAsync("_CommentListByAdvert", new { id = ViewBag.i })
+
+    <br />
+    @await Html.PartialAsync("~/Areas/Default/Views/Advert/PartialAddComment.cshtml")
+    <br />
+
+    @await Component.InvokeAsync("_AdvertFooterPartial")
+
+    @await Component.InvokeAsync("_AdvertScriptPartial")
+
+</body>
+</html>
