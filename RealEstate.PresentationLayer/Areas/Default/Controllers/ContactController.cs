@@ -11,6 +11,7 @@ namespace RealEstate.PresentationLayer.Areas.Default.Controllers
 {
     [AllowAnonymous]
     [Area("Default")]
+    [Route("Default/Contact")]
     public class ContactController : Controller
     {
         private readonly IContactService _contactService;
@@ -19,19 +20,25 @@ namespace RealEstate.PresentationLayer.Areas.Default.Controllers
         {
             _contactService = contactService;
         }
-
+        
+        [Route("")]
+        [Route("Index")]
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
-        public IActionResult PartialSendMessage()
+        [Route("")]
+        [Route("PartialSendMessage")]
+        public PartialViewResult PartialSendMessage()
         {
             return PartialView();
         }
 
         [HttpPost]
+        [Route("")]
+        [Route("PartialSendMessage")]
         public IActionResult PartialSendMessage(Contact contact)
         {
             contact.ContactDate = DateTime.Parse(DateTime.Now.ToShortDateString());

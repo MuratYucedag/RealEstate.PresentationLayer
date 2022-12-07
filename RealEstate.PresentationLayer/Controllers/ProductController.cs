@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RealEstate.BusinessLayer.Abstract;
 using RealEstate.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RealEstate.PresentationLayer.Controllers
 {
@@ -12,10 +14,12 @@ namespace RealEstate.PresentationLayer.Controllers
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
-        public ProductController(IProductService productService, ICategoryService categoryService)
+        private readonly UserManager<AppUser> _userManager;
+        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<AppUser> userManager)
         {
             _productService = productService;
             _categoryService = categoryService;
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -38,8 +42,10 @@ namespace RealEstate.PresentationLayer.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddProduct(Product p)
+        public async Task<IActionResult> AddProduct(Product p)
         {
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            p.AppUserID = values.Id;
             p.Date = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             _productService.TInsert(p);
             return RedirectToAction("Index");
@@ -62,7 +68,7 @@ namespace RealEstate.PresentationLayer.Controllers
                                                Value = x.CategoryID.ToString()
                                            }).ToList();
             ViewBag.v = values;
-                
+
             var values2 = _productService.TGetByID(id);
 
             return View(values2);

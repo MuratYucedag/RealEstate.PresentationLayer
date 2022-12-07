@@ -1,40 +1,48 @@
 ﻿@model Contact
 
-<section class="w3l-contact-2 py-5" id="contact">
-    <div class="container py-lg-5 py-md-4 py-2">
-        <div class="w3l-header-sec text-center mb-md-5 mb-4">
-            <h5 class="sub-title">Bize Yazın</h5>
-            <h3 class="title-style">İletişim</h3>
-        </div>
-        <div class="contact-grids d-grid">
-            <div class="contact-left-img">
-                <img src="~/Cooking-Starter/assets/images/contact.jpg" class="img-fluid radius-image" alt="">
-            </div>
-            <div class="contact-right">
-                @Html.BeginForm("PartialSendMessage", "Contact", FormMethod.Post)
-                { 
-                    <div class="input-grids">
-                        <input type="text" asp-for="ContactNameSurname" id="w3lName" placeholder="Adınız Soyadınız*"
-                               class="contact-input" required="" />
-                        <input type="email" asp-for="ContactMail" id="w3lSender" placeholder="Mail Adresiniz*"
-                               class="contact-input" required="" />
-                        <input type="text" asp-for="ContactSubject" id="w3lSubect" placeholder="Konu*"
-                               class="contact-input" required="" />
-                    </div>
-                <div class="form-input">
-                    <textarea asp-for="ContactMessage" id="w3lMessage" placeholder="Buraya mesajınızı yazabilirsiniz*"
-                              required=""></textarea>
-                </div>
-                <div class="form-buttonhny text-lg-end">
-                    <button class="btn btn-style btn-primary">Mesajı Gönder</button>
-                </div>
-                }
-            </div>
-        </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-        @await Html.PartialAsync("~/Areas/Default/Views/Contact/PartialAddressDetails.cshtml")
-   
-        @await Html.PartialAsync("~/Areas/Default/Views/Contact/PartialMapDetails.cshtml")
-        
-    </div>
-</section>
+    <section class="w3l-contact-2 py-5" id="contact">
+        <div class="container py-lg-5 py-md-4 py-2">
+            <div class="w3l-header-sec text-center mb-md-5 mb-4">
+                <h5 class="sub-title">Bize Yazın</h5>
+                <h3 class="title-style">İletişim</h3>
+            </div>
+            <div class="contact-grids d-grid">
+                <div class="contact-left-img">
+                    <img src="~/Cooking-Starter/assets/images/contact.jpg" class="img-fluid radius-image" alt="">
+                </div>
+                <div class="contact-right">
+                    <form method="post" asp-action="PartialSendMessage" asp-area="Default" asp-controller="Contact">
+                        <div class="input-grids">
+                            <input type="text" asp-for="ContactNameSurname" id="w3lName" placeholder="Adınız Soyadınız*"
+                                   class="contact-input" required="" />
+                            <input type="email" asp-for="ContactMail" id="w3lSender" placeholder="Mail Adresiniz*"
+                                   class="contact-input" required="" />
+                            <input type="text" asp-for="ContactSubject" id="w3lSubect" placeholder="Konu*"
+                                   class="contact-input" required="" />
+                        </div>
+                        <div class="form-input">
+                            <textarea asp-for="ContactMessage" id="w3lMessage" placeholder="Buraya mesajınızı yazabilirsiniz*"
+                                      required=""></textarea>
+                        </div>
+                        <div class="form-buttonhny text-lg-end">
+                            <button class="btn btn-style btn-primary" id="btn1">Mesajı Gönder</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            @await Html.PartialAsync("~/Areas/Default/Views/Contact/PartialAddressDetails.cshtml")
+
+            @await Html.PartialAsync("~/Areas/Default/Views/Contact/PartialMapDetails.cshtml")
+
+        </div>
+    </section>
+
+    <script>
+        $("#btn1").click(function () {
+            swal("Mesajınız Alınmıştır!", "Sayfaya Yeniden Yönlendiriliyorsunuz!", "success");
+        });
+    </script>
